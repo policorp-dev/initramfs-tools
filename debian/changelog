@@ -1,3 +1,9 @@
+initramfs-tools (0.142.Policorp-1) stable; urgency=medium
+
+  * First version in Poliorp
+
+ -- Edson Juliano Drosdeck <edson@policorp.com.br>  Wed, 11 Dec 2024 15:42:23 -0300
+
 initramfs-tools (0.142+deb12u1) bookworm; urgency=medium
 
   [ Ben Hutchings ]
