@@ -11,6 +11,7 @@ Architecture: all
 Multi-Arch: foreign
 Depends: initramfs-tools-core (= ${binary:Version}),
          linux-base,
+	 zstd,
          ${misc:Depends}
 Suggests: bash-completion
 Provides: linux-initramfs-tool
