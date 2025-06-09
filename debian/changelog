@@ -1,3 +1,9 @@
+initramfs-tools (0.148.Policorp-2) stable; urgency=medium
+
+  * Removed  compresslevel
+
+ -- Edson Juliano Drosdeck <edson@policorp.com.br>  Mon, 09 Jun 2025 20:38:12 +0000
+
 initramfs-tools (0.148.Policorp-1) unstable; urgency=medium
 
   * first version in Policorp
