@@ -1,0 +1,26 @@
+#!/bin/sh
+set -e
+
+# Note: The qemu machines used on arm64, armhf, ppc64el, and s390x have no IDE
+SUPPORTED_FLAVOURS='amd64 generic'
+ROOTDISK_QEMU_IF=ide
+ROOTDISK_LINUX_NAME=sda
+. debian/tests/test-common
+
+cat >>"${CONFDIR}/initramfs.conf" <<EOF
+MODULES=list
+BUSYBOX=n
+FSTYPE=ext2
+EOF
+cat >"${CONFDIR}/modules" <<EOF
+ext2
+ata_piix
+sd_mod
+EOF
+build_initramfs
+
+build_rootfs_ext2
+
+# shellcheck disable=SC2119
+run_qemu
+check_no_network_configuration

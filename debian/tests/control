@@ -1,0 +1,100 @@
+Tests: copy-file
+Restrictions: needs-root, breaks-testbed, skip-not-installable, superficial, allow-stderr
+Depends: linux-image-generic, zstd, @
+
+Tests: unmkinitramfs
+Restrictions: superficial
+Depends: bzip2, xz-utils, lzop, lz4, zstd, @
+
+Tests: qemu-klibc
+Architecture: amd64 armhf s390x
+Restrictions: needs-root, breaks-testbed
+Depends: e2fsprogs,
+         genext2fs,
+         ipxe-qemu,
+         klibc-utils,
+         linux-image-generic,
+         qemu-efi-arm [armhf],
+         qemu-kvm,
+         zstd,
+         @
+
+Tests: qemu-busybox
+Architecture: amd64 armhf s390x
+Restrictions: needs-root, breaks-testbed
+Depends: busybox | busybox-initramfs,
+         e2fsprogs,
+         genext2fs,
+         ipxe-qemu,
+         klibc-utils,
+         linux-image-generic,
+         qemu-efi-arm [armhf],
+         qemu-kvm,
+         zstd,
+         @
+
+Tests: qemu-ata-only
+Architecture: amd64
+Restrictions: needs-root, breaks-testbed
+Depends: e2fsprogs,
+         genext2fs,
+         klibc-utils,
+         linux-image-generic,
+         qemu-kvm,
+         zstd,
+         @
+
+Tests: qemu-virtio-only qemu-separate-usr qemu-panic-shell
+Architecture: amd64 arm64 armhf ppc64el s390x
+Restrictions: needs-root, breaks-testbed
+Depends: e2fsprogs,
+         genext2fs,
+         ipxe-qemu,
+         klibc-utils,
+         linux-image-generic,
+         qemu-efi-aarch64 [arm64],
+         qemu-efi-arm [armhf],
+         qemu-kvm,
+         seabios [ppc64el],
+         zstd,
+         @
+
+Tests: qemu-net
+Architecture: amd64 arm64 armhf ppc64el s390x
+Restrictions: needs-root, breaks-testbed
+Depends: e2fsprogs,
+         genext2fs,
+         iproute2,
+         ipxe-qemu,
+         klibc-utils,
+         linux-image-generic,
+         procps,
+         python3,
+         qemu-efi-aarch64 [arm64],
+         qemu-efi-arm [armhf],
+         qemu-kvm,
+         seabios [ppc64el],
+         zstd,
+         @
+
+Tests: qemu-net-iscsi
+Architecture: amd64 arm64 armhf ppc64el s390x
+Restrictions: breaks-testbed, needs-root
+Depends: busybox | busybox-initramfs,
+         dnsmasq,
+         e2fsprogs,
+         genext2fs,
+         iproute2,
+         ipxe-qemu,
+         klibc-utils,
+         linux-image-generic,
+         open-iscsi,
+         procps,
+         python3,
+         qemu-efi-aarch64 [arm64],
+         qemu-efi-arm [armhf],
+         qemu-kvm,
+         seabios [ppc64el],
+         tgt,
+         zstd,
+         @

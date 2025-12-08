@@ -1,0 +1,19 @@
+include:
+  - https://salsa.debian.org/salsa-ci-team/pipeline/raw/master/salsa-ci.yml
+  - https://salsa.debian.org/salsa-ci-team/pipeline/raw/master/pipeline-jobs.yml
+
+variables:
+  RELEASE: 'unstable'
+
+shellcheck:
+  stage: test
+  image: $SALSA_CI_IMAGES_BASE
+  except:
+    variables:
+      - $CI_COMMIT_TAG != null
+  script:
+    - apt-get update
+    - apt-get install -y shellcheck
+    - |
+        shellcheck hook-functions $(find hooks scripts -type f) $({ find . -maxdepth 1 -type f -executable; find debian -maxdepth 1 -type f; find debian/tests docs kernel tests -type f; } | xargs grep -l '^#!/bin/sh')
+  needs: []

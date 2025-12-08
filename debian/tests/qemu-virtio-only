@@ -1,0 +1,25 @@
+#!/bin/sh
+set -e
+
+SUPPORTED_FLAVOURS='amd64 arm64 armmp powerpc64le s390x generic'
+ROOTDISK_QEMU_IF=virtio
+ROOTDISK_LINUX_NAME=vda
+. debian/tests/test-common
+
+cat >>"${CONFDIR}/initramfs.conf" <<EOF
+MODULES=list
+BUSYBOX=n
+FSTYPE=ext2
+EOF
+cat >"${CONFDIR}/modules" <<EOF
+ext2
+virtio_pci
+virtio_blk
+EOF
+build_initramfs
+
+build_rootfs_ext2
+
+# shellcheck disable=SC2119
+run_qemu
+check_no_network_configuration
