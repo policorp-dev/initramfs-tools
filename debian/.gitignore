@@ -4,4 +4,5 @@
 /.debhelper
 /files
 /initramfs-tools/
+/initramfs-tools-bin/
 /initramfs-tools-core/
