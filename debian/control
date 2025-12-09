@@ -5,6 +5,7 @@ Maintainer: Edson Juliano Drosdeck <edson@policorp.com.br>
 Build-Depends: bash-completion, debhelper-compat (= 13), shunit2 <!nocheck>
 Rules-Requires-Root: no
 Standards-Version: 4.7.2
+Vcs-Git: https://github.com/policorp-dev/initramfs-tools.git
 
 Package: initramfs-tools
 Architecture: all
